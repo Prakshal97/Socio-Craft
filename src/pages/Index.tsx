@@ -8,7 +8,7 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
-import heroImg from "@/assets/hero-illustration.png";
+import heroImg from "@/assets/image copy.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
