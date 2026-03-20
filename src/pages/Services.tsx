@@ -118,24 +118,32 @@ const Services = () => {
       {/* CTA */}
       <section className="section-padding">
         <div className="container-narrow">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="gradient-primary rounded-3xl p-10 md:p-16 text-center"
-          >
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground mb-4">
-              Need a custom marketing plan?
+
+          <div className="relative rounded-3xl p-16 text-center bg-gradient-to-br from-[#E8AEB7] to-[#F3C5CB] shadow-xl overflow-hidden">
+
+            {/* glow */}
+            <div className="absolute w-72 h-72 bg-white/20 blur-3xl rounded-full -top-10 -left-10"></div>
+
+            <h2 className="text-4xl font-bold text-black mb-4">
+             Need a custom marketing plan?
             </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
-              Every practice is unique. Let's create a strategy tailored to your goals.
+
+            <p className="text-gray-700 mb-8">
+             Every practice is unique. Let's create a strategy tailored to your goals.
             </p>
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-sm bg-primary-foreground text-primary rounded-xl hover:bg-primary-foreground/90 transition-colors shadow-lg">
-              Get Free Consultation <ArrowRight size={16} />
+
+            <Link
+              to="/contact"
+              className="px-8 py-4 bg-black text-white rounded-xl hover:scale-105 transition-all shadow-lg"
+            >
+              Get Free Consultation →
             </Link>
-          </motion.div>
+
+          </div>
+
         </div>
       </section>
+
 
       <Footer />
     </div>
