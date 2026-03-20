@@ -5,13 +5,35 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
 
-const team = [
-  { name: "Bhavesh Jain", role: "Founder & Strategy Head", desc: "Leads Sociocraft's strategic direction with a deep understanding of healthcare marketing ecosystems." },
-  { name: "Divya Jain", role: "Co-Founder & Operations", desc: "Oversees operations and ensures seamless execution of marketing campaigns for healthcare clients." },
-  { name: "Nisha Singh", role: "Lead Developer & CTO", desc: "Architecting robust, fast-loading healthcare websites optimized for conversions." },
-  { name: "Prakshal Jain", role: "Lead Developer & CTO", desc: "Driving technical innovation and building scalable digital solutions for medical practices." },
+const founders = [
+  {
+    name: "Bhavesh Jain",
+    role: "Founder & Strategy Head",
+    desc: "Leads Sociocraft's strategic direction with a deep understanding of healthcare marketing ecosystems.",
+    image: "/team/bhavesh.jpg"
+  },
+  {
+    name: "Divya Jain",
+    role: "Co-Founder & Operations",
+    desc: "Oversees operations and ensures seamless execution of marketing campaigns for healthcare clients.",
+    image: "/team/divya.jpg"
+  }
 ];
 
+const ctos = [
+  {
+    name: "Nisha Singh",
+    role: "Lead Developer & CTO",
+    desc: "Architecting robust, fast-loading healthcare websites optimized for conversions.",
+    image: "/team/nisha.png"
+  },
+  {
+    name: "Prakshal Jain",
+    role: "Lead Developer & CTO",
+    desc: "Driving technical innovation and building scalable digital solutions for medical practices.",
+    image: "/team/prakshal.png"
+  }
+];
 const approaches = [
   { icon: ShieldCheck, title: "Ethical compliance", desc: "Every strategy adheres to medical advertising guidelines and regulations." },
   { icon: Lightbulb, title: "Research-first", desc: "We begin with data analysis and competitive research before any campaign." },
@@ -106,52 +128,89 @@ const About = () => {
       </section>
 
       {/* Team */}
-      <section className="section-padding bg-muted/50">
-        <div className="container-narrow">
-          <SectionHeading label="Leadership" title="Meet the team behind Sociocraft" />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-card rounded-2xl p-6 border border-border text-center"
-              >
-                <div className="w-20 h-20 rounded-full gradient-primary mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-primary-foreground font-heading font-bold text-xl">
-                    {member.name.split(" ").map(n => n[0]).join("")}
-                  </span>
-                </div>
-                <h3 className="font-heading font-semibold text-heading">{member.name}</h3>
-                <p className="text-xs text-primary font-medium mb-3">{member.role}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed">{member.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* Team */}
+<section className="section-padding bg-muted/50">
+  <div className="container-narrow">
+    <SectionHeading label="Leadership" title="Meet the team behind Sociocraft" />
 
+    {/* Founders */}
+    <div className="grid md:grid-cols-2 gap-8 mb-12">
+      {founders.map((member, i) => (
+        <motion.div
+          key={member.name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+          className="bg-white rounded-2xl p-8 border border-[#F3C5CB] text-center shadow-sm hover:shadow-lg transition-all"
+        >
+          {/* IMAGE */}
+          <img
+            src={member.image}
+            alt={member.name}
+            className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-[#FDECEF]"
+          />
+
+          <h3 className="font-heading font-semibold text-lg text-black">{member.name}</h3>
+          <p className="text-sm text-[#E8AEB7] font-medium mb-3">{member.role}</p>
+          <p className="text-sm text-gray-600 leading-relaxed">{member.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* CTOs */}
+    <div className="grid md:grid-cols-2 gap-8">
+      {ctos.map((member, i) => (
+        <motion.div
+          key={member.name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+          className="bg-white rounded-2xl p-8 border border-[#F3C5CB] text-center shadow-sm hover:shadow-lg transition-all"
+        >
+          {/* IMAGE */}
+          <img
+            src={member.image}
+            alt={member.name}
+            className="w-24 h-24 rounded-full object-cover mx-auto mb-4 border-4 border-[#FDECEF]"
+          />
+
+          <h3 className="font-heading font-semibold text-lg text-black">{member.name}</h3>
+          <p className="text-sm text-[#E8AEB7] font-medium mb-3">{member.role}</p>
+          <p className="text-sm text-gray-600 leading-relaxed">{member.desc}</p>
+        </motion.div>
+      ))}
+    </div>
+
+  </div>
+</section>
       {/* CTA */}
       <section className="section-padding">
         <div className="container-narrow">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="gradient-primary rounded-3xl p-10 md:p-16 text-center"
-          >
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-primary-foreground mb-4">
+
+          <div className="relative rounded-3xl p-16 text-center bg-gradient-to-br from-[#E8AEB7] to-[#F3C5CB] shadow-xl overflow-hidden">
+
+            {/* glow */}
+            <div className="absolute w-72 h-72 bg-white/20 blur-3xl rounded-full -top-10 -left-10"></div>
+
+            <h2 className="text-4xl font-bold text-black mb-4">
               Ready to work with us?
             </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
+
+            <p className="text-gray-700 mb-8">
               Let's discuss how we can grow your practice's digital presence.
             </p>
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-sm bg-primary-foreground text-primary rounded-xl hover:bg-primary-foreground/90 transition-colors shadow-lg">
-              Get In Touch <ArrowRight size={16} />
+
+            <Link
+              to="/contact"
+              className="px-8 py-4 bg-black text-white rounded-xl hover:scale-105 transition-all shadow-lg"
+            >
+              Get in touch →
             </Link>
-          </motion.div>
+
+          </div>
+
         </div>
       </section>
 

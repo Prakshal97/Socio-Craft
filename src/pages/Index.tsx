@@ -178,43 +178,67 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="section-padding bg-heading">
-        <div className="container-narrow">
-          <div className="text-center mb-12 md:mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary-end bg-primary-end/10 rounded-full mb-4">
-                Why Sociocraft
-              </span>
-              <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary-foreground leading-tight max-w-3xl mx-auto">
-                Built for healthcare, driven by results
-              </h2>
-            </motion.div>
+  {/* Why Choose Us */}
+<section className="w-full py-24 bg-gradient-to-b from-[#F5EFE7] via-white to-[#FDECEF]">
+  <div className="px-6 lg:px-12 xl:px-20 2xl:px-32">
+
+    {/* Heading */}
+    <div className="text-center mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <span className="inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#E8AEB7] bg-[#F3C5CB]/30 rounded-full mb-4">
+          Why Sociocraft
+        </span>
+
+        <h2 className="font-heading font-bold text-4xl md:text-5xl text-black leading-tight">
+          Built for healthcare,
+          <span className="block bg-gradient-to-r from-[#E8AEB7] to-[#F3C5CB] bg-clip-text text-transparent">
+            driven by results
+          </span>
+        </h2>
+
+        <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+          We help doctors and clinics grow with strategies that are ethical, data-driven, and focused on real patient acquisition.
+        </p>
+      </motion.div>
+    </div>
+
+    {/* Cards */}
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {whyChoose.map((item, i) => (
+        <motion.div
+          key={item.title}
+          custom={i}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          className="bg-white/80 backdrop-blur-md border border-[#F3C5CB] p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+        >
+          {/* Icon */}
+          <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#FDECEF] mb-5">
+            <item.icon size={22} className="text-[#E8AEB7]" />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyChoose.map((item, i) => (
-              <motion.div
-                key={item.title}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                className="bg-primary-foreground/5 backdrop-blur-sm rounded-2xl p-7 border border-primary-foreground/10"
-              >
-                <item.icon size={24} className="text-primary-end mb-4" />
-                <h3 className="font-heading font-semibold text-primary-foreground mb-2">{item.title}</h3>
-                <p className="text-sm text-primary-foreground/60 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+          {/* Title */}
+          <h3 className="font-heading font-semibold text-lg text-black mb-2">
+            {item.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-sm text-gray-600 leading-relaxed">
+            {item.desc}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       {/* Case Study Preview */}
       <section className="section-padding">
@@ -228,9 +252,9 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="grid lg:grid-cols-2 gap-0 bg-card rounded-2xl border border-border overflow-hidden"
+           className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden bg-white shadow-lg border border-[#F3C5CB]"
           >
-            <div className="bg-muted/50 p-8 md:p-12 flex flex-col justify-center">
+           <div className="p-10 md:p-14 flex flex-col justify-center bg-gradient-to-br from-[#F5EFE7] to-white">
               <span className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">Featured Client</span>
               <h3 className="font-heading font-bold text-2xl md:text-3xl text-heading mb-4">Dr Gaurav Neurospine</h3>
               <p className="text-body leading-relaxed mb-6">
@@ -253,7 +277,7 @@ const Index = () => {
                   href="https://drgauravneurospine.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold gradient-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold bg-gradient-to-r from-[#E8AEB7] to-[#F3C5CB] text-black rounded-xl shadow-md hover:scale-105 transition-all"
                 >
                   Visit Website <ArrowRight size={14} />
                 </a>
@@ -265,23 +289,24 @@ const Index = () => {
                 </Link>
               </div>
             </div>
-            <div className="bg-muted flex items-center justify-center p-8 min-h-[300px]">
-              <div className="w-full max-w-sm rounded-xl overflow-hidden shadow-2xl border border-border bg-card">
-                <div className="h-6 bg-muted flex items-center gap-1.5 px-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
-                </div>
-                <div className="p-4 space-y-3">
-                  <div className="h-3 bg-primary/20 rounded w-3/4" />
-                  <div className="h-2 bg-muted rounded w-full" />
-                  <div className="h-2 bg-muted rounded w-5/6" />
-                  <div className="h-20 bg-primary/10 rounded-lg" />
-                  <div className="h-2 bg-muted rounded w-2/3" />
-                  <div className="h-8 gradient-primary rounded-md w-1/3" />
-                </div>
-              </div>
-            </div>
+           <div className="flex items-center justify-center p-8">
+  <div className="w-full  rounded-2xl overflow-hidden shadow-2xl border border-[#F3C5CB] bg-white hover:scale-105 transition-transform duration-300">
+    
+    {/* Browser top bar */}
+    <div className="h-6 bg-[#FDECEF] flex items-center gap-2 px-3">
+      <div className="w-2.5 h-2.5 rounded-full bg-red-300" />
+      <div className="w-2.5 h-2.5 rounded-full bg-yellow-300" />
+      <div className="w-2.5 h-2.5 rounded-full bg-green-300" />
+    </div>
+
+    {/* Screenshot */}
+    <img
+      src="/dr-gaurav-site.png"   // put your screenshot in public folder
+      alt="Dr Gaurav Neurospine website"
+      className="w-full object-cover"
+    />
+  </div>
+</div>
           </motion.div>
         </div>
       </section>
@@ -313,29 +338,31 @@ const Index = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding">
+     <section className="section-padding">
         <div className="container-narrow">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="gradient-primary rounded-3xl p-10 md:p-16 text-center"
-          >
-            <h2 className="font-heading font-bold text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-4">
-              Ready to grow your clinic online?
+
+          <div className="relative rounded-3xl p-16 text-center bg-gradient-to-br from-[#E8AEB7] to-[#F3C5CB] shadow-xl overflow-hidden">
+
+            {/* glow */}
+            <div className="absolute w-72 h-72 bg-white/20 blur-3xl rounded-full -top-10 -left-10"></div>
+
+            <h2 className="text-4xl font-bold text-black mb-4">
+             Ready to grow your clinic online?
             </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
-              Let's discuss how Sociocraft can help your practice attract more patients.
+
+            <p className="text-gray-700 mb-8">
+             Let's discuss how Sociocraft can help your practice attract more patients.
             </p>
+
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 font-semibold text-sm bg-primary-foreground text-primary rounded-xl hover:bg-primary-foreground/90 transition-colors shadow-lg"
+              className="px-8 py-4 bg-black text-white rounded-xl hover:scale-105 transition-all shadow-lg"
             >
-              Book Consultation
-              <ArrowRight size={16} />
+              Book Consultation →
             </Link>
-          </motion.div>
+
+          </div>
+
         </div>
       </section>
 

@@ -112,9 +112,9 @@ const Contact = () => {
               className="lg:col-span-2 space-y-6"
             >
               {[
-                { icon: Mail, label: "Email", value: "hello@sociocraft.in", href: "mailto:hello@sociocraft.in" },
-                { icon: Phone, label: "Phone", value: "+91 98765 43210", href: "tel:+919876543210" },
-                { icon: MapPin, label: "Office", value: "Mumbai, Maharashtra, India", href: undefined },
+                { icon: Mail, label: "Email", value: "sociokraft@gmail.com", href: "mailto:sociokraft@gmail.com" },
+                { icon: Phone, label: "Phone", value: "+91 63753 32581", href: "tel:+91 63753 32581" },
+                { icon: MapPin, label: "Office", value: "Udaipur, Rajasthan, India", href: undefined },
               ].map((item) => (
                 <div key={item.label} className="bg-card rounded-2xl p-6 border border-border">
                   <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center mb-3">
