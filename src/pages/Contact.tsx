@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
@@ -8,11 +9,30 @@ import { toast } from "sonner";
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Thank you! We'll get back to you within 24 hours.");
-    setForm({ name: "", email: "", phone: "", message: "" });
-  };
+ const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+
+  emailjs
+    .send(
+      "service_8mxkzz9",   // 🔥 paste here
+      "template_pip0t0c",  // 🔥 paste here
+      {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+      },
+      "f1MX6eRi3ZEN96rZR"    // 🔥 paste here
+    )
+    .then(() => {
+      toast.success("Message sent successfully 🚀");
+      setForm({ name: "", email: "", phone: "", message: "" });
+    })
+    .catch((error) => {
+      console.error(error);
+      toast.error("Something went wrong ❌");
+    });
+};
 
   return (
     <div className="min-h-screen bg-background">
