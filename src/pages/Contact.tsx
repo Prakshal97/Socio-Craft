@@ -1,7 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send,Instagram } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { toast } from "sonner";
@@ -131,37 +131,55 @@ const Contact = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="lg:col-span-2 space-y-6"
             >
-              {[
-                { icon: Mail, label: "Email", value: "sociokraft@gmail.com", href: "mailto:sociokraft@gmail.com" },
-                { icon: Phone, label: "Phone", value: "+91 63753 32581", href: "tel:+91 63753 32581" },
-                { icon: MapPin, label: "Office", value: "Udaipur, Rajasthan, India", href: undefined },
-              ].map((item) => (
-                <div key={item.label} className="bg-card rounded-2xl p-6 border border-border">
-                  <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center mb-3">
-                    <item.icon size={18} className="text-primary-foreground" />
-                  </div>
-                  <h3 className="font-heading font-semibold text-heading text-sm mb-1">{item.label}</h3>
-                  {item.href ? (
-                    <a href={item.href} className="text-sm text-primary hover:underline">{item.value}</a>
-                  ) : (
-                    <p className="text-sm text-muted-foreground">{item.value}</p>
-                  )}
-                </div>
-              ))}
+             {[
+  {
+    icon: Mail,
+    label: "Email",
+    value: "sociokraft@gmail.com",
+    href: "mailto:sociokraft@gmail.com",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 8169767685",
+    href: "https://wa.me/918169767685?text=Hello%20Sociokraft%2C%20I%20want%20to%20know%20more%20about%20your%20services.",
+  },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    value: "@sociokraft",
+    href: "https://www.instagram.com/sociokraft_?igsh=MXVhbW9pNGNtdzFuNA%3D%3D",
+  },
+].map((item) => (
+  <div
+    key={item.label}
+    className="bg-card rounded-2xl p-6 border border-border"
+  >
+    <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center mb-3">
+      <item.icon size={18} className="text-primary-foreground" />
+    </div>
+
+    <h3 className="font-heading font-semibold text-heading text-sm mb-1">
+      {item.label}
+    </h3>
+
+    {item.href ? (
+      <a
+        href={item.href}
+        target="https://www.instagram.com/sociokraft_?igsh=MXVhbW9pNGNtdzFuNA%3D%3D"
+        rel="noopener noreferrer"
+        className="text-sm text-primary hover:underline"
+      >
+        {item.value}
+      </a>
+    ) : (
+      <p className="text-sm text-muted-foreground">{item.value}</p>
+    )}
+  </div>
+))}
 
               {/* Map placeholder */}
-              <div className="bg-card rounded-2xl border border-border overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609823277!2d72.74109995709657!3d19.08219783958221!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="200"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Sociocraft Office Location"
-                />
-              </div>
+             
             </motion.div>
           </div>
         </div>

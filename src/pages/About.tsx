@@ -16,7 +16,7 @@ const founders = [
     name: "Divya Jain",
     role: "Co-Founder & Operations",
     desc: "Oversees operations and ensures seamless execution of marketing campaigns for healthcare clients.",
-    image: "/team/divya.jpg"
+    image: "/team/divya.png"
   }
 ];
 

@@ -19,7 +19,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container-narrow flex items-center justify-between h-16 md:h-20">
         <Link to="/" className="font-heading font-bold text-xl md:text-2xl text-heading">
-          Socio<span className="gradient-text">craft</span>
+          Socio<span className="gradient-text">Kraft</span>
         </Link>
 
         {/* Desktop + Tablet nav */}

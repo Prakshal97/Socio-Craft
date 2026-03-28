@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <h3 className="font-heading font-bold text-xl text-white mb-4">
-  Socio<span className="text-[#E8AEB7]">craft</span>
+  Socio<span className="text-[#E8AEB7]">Kraft</span>
 </h3>
             <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
               Crafting digital growth for healthcare brands. Ethical, guideline-based digital marketing for doctors, clinics, and hospitals.
@@ -76,34 +76,44 @@ const Footer = () => {
               Contact
             </h4>
             <ul className="space-y-2.5 text-sm text-gray-400">
-              <li>hello@sociocraft.in</li>
-              <li>+91 98765 43210</li>
-              <li>Mumbai, India</li>
+              <li>sociokraft@gmail.com</li>
+              <li>+91 8169767685</li>
+              <li>Udaipur, India</li>
             </ul>
           </div>
 
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+       <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
 
-          <p className="text-xs text-gray-500">
-            © {new Date().getFullYear()} Sociocraft. All rights reserved.
-          </p>
+  <p className="text-xs text-gray-500">
+    © {new Date().getFullYear()} Sociocraft. All rights reserved.
+  </p>
 
-          <div className="flex items-center gap-6">
-            {["LinkedIn", "Instagram", "Twitter"].map((social) => (
-              <a
-                key={social}
-                href="#"
-                className="text-xs text-gray-500 hover:text-[#E8AEB7] transition-colors"
-              >
-                {social}
-              </a>
-            ))}
-          </div>
+  {/* FIX: wrap this */}
+  <div className="flex items-center gap-6">
+    {[
+      { name: "LinkedIn", url: "https://linkedin.com" },
+      { name: "Instagram", url: "https://www.instagram.com/sociokraft_" },
+      {
+        name: "WhatsApp",
+        url: "https://wa.me/918169767685?text=Hello%20Sociokraft%2C%20I%20want%20to%20know%20more%20about%20your%20services."
+      },
+    ].map((social) => (
+      <a
+        key={social.name}
+        href={social.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-xs text-gray-500 hover:text-[#E8AEB7] transition-colors"
+      >
+        {social.name}
+      </a>
+    ))}
+  </div>
 
-        </div>
+</div>
       </div>
     </footer>
   );
