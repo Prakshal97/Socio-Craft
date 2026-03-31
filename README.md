@@ -1,73 +1,88 @@
-# Welcome to your Lovable project
+# Sociocraft
 
-## Project info
+Sociocraft is a modern, conversion-focused website for a healthcare digital marketing agency. It is designed to help doctors, clinics, and hospitals build a strong online presence and generate patient leads through structured digital strategies.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Features
 
-## How can I edit this code?
+- Clean and modern UI focused on conversions  
+- Fully responsive design across devices  
+- Case study showcase with real results  
+- Lead generation contact form (EmailJS integration)  
+- Smooth animations using Framer Motion  
+- Structured pages: Home, About, Services, Case Studies, Contact  
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- React (Vite)  
+- TypeScript  
+- Tailwind CSS  
+- shadcn/ui  
+- Framer Motion  
+- EmailJS  
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+Clone the repository:
 
-**Use your preferred IDE**
+git clone <YOUR_GIT_URL>  
+cd <YOUR_PROJECT_NAME>  
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Install dependencies:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+npm install  
 
-Follow these steps:
+Run the development server:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+npm run dev  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Contact Form Setup (EmailJS)
 
-# Step 3: Install the necessary dependencies.
-npm i
+To enable email functionality:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+1. Create an account on EmailJS  
+2. Add a Gmail service  
+3. Create an email template  
+4. Replace credentials inside Contact.tsx:
 
-**Edit a file directly in GitHub**
+emailjs.send(
+  "YOUR_SERVICE_ID",
+  "YOUR_TEMPLATE_ID",
+  {
+    name,
+    email,
+    phone,
+    message
+  },
+  "YOUR_PUBLIC_KEY"
+);
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Project Structure
 
-**Use GitHub Codespaces**
+src/  
+  components/  
+  pages/  
+  assets/  
+  hooks/  
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Deployment
 
-## What technologies are used for this project?
+This project can be deployed on:
 
-This project is built with:
+- Vercel  
+- Netlify  
+- Any static hosting platform  
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Notes
 
-## How can I deploy this project?
+- This is a frontend-focused project  
+- Email handling is done via EmailJS (no backend required)  
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Author
 
-## Can I connect a custom domain to my Lovable project?
+Prakshal Jain  
+GitHub: https://github.com/Prakshal97  
+LinkedIn: https://linkedin.com/in/prakshal-jain-b832b5331  
 
-Yes, you can!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is open source and available under the MIT License.
