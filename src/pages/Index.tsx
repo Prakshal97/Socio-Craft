@@ -1,138 +1,182 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  Globe, Share2, Search, BarChart3, MapPin,
-  ShieldCheck, Heart, TrendingUp, Database, Users,
-  ArrowRight, Star, Quote
+  Globe,
+  Search,
+  BarChart3,
+  Building2,
+  Gamepad2,
+  LineChart,
+  ArrowRight,
+  Star,
+  Quote,
+  Sparkles,
+  ShieldCheck,
+  Zap,
+  CheckCircle2,
+  TrendingUp,
+  Layers,
+  Award,
+  Lock,
+  ExternalLink
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SectionHeading from "@/components/SectionHeading";
-import heroImg from "@/assets/image copy.png";
+import LogoMarquee from "@/components/LogoMarquee";
+import GrowthCalculator from "@/components/GrowthCalculator";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
-    opacity: 1, y: 0,
+    opacity: 1,
+    y: 0,
     transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" as const },
   }),
 };
 
-const services = [
-  { icon: Globe, title: "Website Designing", desc: "Professional clinic & hospital websites with appointment booking and SEO optimization." },
-  { icon: Share2, title: "Social Media Marketing", desc: "Doctor branding, content creation, and patient engagement on Instagram & Facebook." },
-  { icon: Search, title: "Healthcare SEO", desc: "Local SEO, Google ranking optimization, and keyword targeting for medical practices." },
-  { icon: BarChart3, title: "Google & Meta Ads", desc: "Patient lead generation through Google, Facebook, and Instagram advertising." },
-  { icon: MapPin, title: "GMB Optimization", desc: "Google My Business setup, local ranking, review management, and map visibility." },
+const bentoServices = [
+  {
+    icon: Globe,
+    title: "Website Engineering & Conversion UX",
+    desc: "Custom high-converting websites built with modern frameworks, online appointment engines, and lightning-fast performance.",
+    tag: "High Conversion",
+    cols: "lg:col-span-8",
+    color: "from-indigo-500/20 to-purple-500/10"
+  },
+  {
+    icon: Search,
+    title: "Healthcare & Local SEO Dominance",
+    desc: "Dominate local Google search rankings for clinics, hospitals & specialist doctors to drive organic inquiries.",
+    tag: "Top Rankings",
+    cols: "lg:col-span-4",
+    color: "from-blue-500/20 to-cyan-500/10"
+  },
+  {
+    icon: Building2,
+    title: "Exhibition Stand 3D Design & Build",
+    desc: "Photorealistic 3D renders, spatial booth planning, construction, installation, and dismantling across major exhibition venues in India.",
+    tag: "15+ Yrs Expertise",
+    cols: "lg:col-span-4",
+    color: "from-emerald-500/20 to-teal-500/10"
+  },
+  {
+    icon: Gamepad2,
+    title: "Interactive Booth Gamification",
+    desc: "Custom-branded touchscreen mini-games built for live exhibition booths to magnetize foot traffic and create brand recall.",
+    tag: "Live Booth Tech",
+    cols: "lg:col-span-4",
+    color: "from-violet-500/20 to-indigo-500/10"
+  },
+  {
+    icon: LineChart,
+    title: "Custom Software & Fintech Engineering",
+    desc: "Bespoke enterprise software, stock advisory platforms, and client portals built under strict NDA confidentiality.",
+    tag: "Custom Systems",
+    cols: "lg:col-span-4",
+    color: "from-amber-500/20 to-orange-500/10"
+  }
 ];
 
-const whyChoose = [
-  { icon: Heart, title: "Healthcare expertise", desc: "Deep understanding of medical marketing regulations and patient acquisition." },
-  { icon: ShieldCheck, title: "Ethical marketing", desc: "Guideline-based strategies that maintain medical professionalism." },
-  { icon: TrendingUp, title: "Lead generation", desc: "Proven systems that convert online visitors into patient appointments." },
-  { icon: Database, title: "Data-driven campaigns", desc: "Every decision backed by analytics, A/B testing, and performance metrics." },
-  { icon: Users, title: "Dedicated team", desc: "A specialized marketing team focused exclusively on your practice's growth." },
+const whyChooseUs = [
+  {
+    icon: Award,
+    title: "Multi-Industry Masterclass",
+    desc: "Proven track record spanning healthcare digital marketing, 3D exhibition architecture, live booth tech, and financial software."
+  },
+  {
+    icon: Zap,
+    title: "Beyond Static Websites",
+    desc: "We build interactive booth mini-games, 3D spatial renders, and full-stack software when a brand needs to truly stand out."
+  },
+  {
+    icon: TrendingUp,
+    title: "Data-Driven ROI & Patient Surge",
+    desc: "Every marketing campaign and digital system is engineered to maximize conversion rates, lead flow, and patient appointments."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Enterprise NDA & Confidentiality",
+    desc: "Trusted by leading advisory firms and brands with strict non-disclosure agreements and secure software architecture."
+  }
 ];
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#0A0F1D] text-white selection:bg-indigo-500/30 selection:text-white">
       <Header />
 
-      {/* Hero */}
-      <section className="pt-28 md:pt-36 pb-16 md:pb-24">
-        <div className="container-narrow">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative pt-32 md:pt-44 pb-20 md:pb-28 overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[550px] aurora-glow-1 blur-[140px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/3 right-5 w-[600px] h-[450px] aurora-glow-2 blur-[150px] rounded-full pointer-events-none" />
+
+        <div className="container-narrow relative z-10">
+          <div className="text-center max-w-4xl mx-auto space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-900/80 backdrop-blur-md border border-indigo-500/30 text-xs md:text-sm font-medium text-white mb-6 shadow-xl shadow-indigo-950/50">
+                <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-ping" />
+                <span className="gradient-emerald font-bold">Digital Growth & Engineering Agency</span>
+                <span className="text-slate-600">|</span>
+                <span className="text-slate-300 font-mono">Healthcare • Exhibition • Software</span>
+              </div>
+
+              <h1 className="font-heading font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.08] tracking-tight mb-6 text-white">
+                Transforming brands with <br className="hidden sm:block" />
+                <span className="gradient-text">websites, 3D booths & software</span>
+              </h1>
+
+              <p className="text-slate-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                We help clinics, exhibition leaders, and enterprises scale online through high-converting websites, 3D stand designs, interactive booth games, and custom fintech platforms.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex flex-wrap items-center justify-center gap-4 pt-2"
+            >
+              <Link
+                to="/contact"
+                className="btn-glow gradient-primary text-white text-base py-4 px-9 rounded-full shadow-2xl flex items-center gap-2.5 font-semibold"
+              >
+                <span>Get Free Consultation</span>
+                <ArrowRight size={18} />
+              </Link>
+
+              <Link
+                to="/case-studies"
+                className="px-8 py-4 rounded-full bg-slate-900/80 hover:bg-slate-800 transition-colors text-sm font-semibold text-white border border-indigo-500/25 backdrop-blur-md"
+              >
+                Explore Portfolio & Projects
+              </Link>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <span className="inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary bg-primary/5 rounded-full mb-6">
-                Healthcare Digital Marketing
-              </span>
-              <h1 className="font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl text-heading leading-[1.1] mb-6">
-                Helping doctors grow their{" "}
-                <span className="gradient-text">digital presence</span>
-              </h1>
-              <p className="text-body text-lg md:text-xl leading-relaxed mb-8 max-w-lg">
-                Sociocraft helps doctors, clinics, and hospitals attract patients through strategic digital marketing.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm gradient-primary text-primary-foreground rounded-xl hover:opacity-90 transition-opacity shadow-lg shadow-primary/20"
-                >
-                  Get Free Consultation
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  to="/case-studies"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold text-sm text-muted-foreground border border-border rounded-xl hover:bg-muted transition-colors"
-                >
-                  View Case Studies
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="flex justify-center"
-            >
-              <img src={heroImg} alt="Healthcare digital marketing illustration" className="w-full max-w-md lg:max-w-lg" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Preview */}
-      <section className="section-padding bg-muted/50">
-        <div className="container-narrow">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary bg-primary/5 rounded-full mb-4">
-                About Sociocraft
-              </span>
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-heading leading-tight mb-6">
-                Crafting digital growth for{" "}
-                <span className="gradient-text">healthcare brands</span>
-              </h2>
-              <p className="text-body leading-relaxed mb-4">
-                We help doctors, clinics, and hospitals build a strong online presence and attract more patients using ethical and guideline-based digital marketing strategies.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                Founded by a team of healthcare marketing specialists and technologists, Sociocraft bridges the gap between medical expertise and digital visibility.
-              </p>
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
-              >
-                Learn More <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="grid grid-cols-2 gap-4"
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 text-left max-w-4xl mx-auto"
             >
               {[
-                { num: "50+", label: "Healthcare clients" },
-                { num: "200%", label: "Avg. lead increase" },
-                { num: "95%", label: "Client retention" },
-                { num: "3+", label: "Years of expertise" },
-              ].map((stat, i) => (
-                <div key={i} className="bg-card rounded-2xl p-6 border border-border text-center">
-                  <div className="font-heading font-bold text-2xl md:text-3xl gradient-text mb-1">{stat.num}</div>
-                  <div className="text-xs text-muted-foreground font-medium">{stat.label}</div>
+                { num: "+180%", label: "Patient Lead Surge", sub: "Dr Gaurav Neurospine" },
+                { num: "15+ Yrs", label: "Exhibition 3D Builds", sub: "Elite Eventures" },
+                { num: "Live Tech", label: "Interactive Gamification", sub: "DR-RASHEL Booth" },
+                { num: "NDA Protected", label: "Confidential Fintech Software", sub: "Wealthmine Advisory" },
+              ].map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="glass-card glass-card-hover p-5 rounded-2xl border border-indigo-500/20 bg-slate-900/50"
+                >
+                  <div className="font-heading font-extrabold text-2xl md:text-3xl gradient-text mb-1">
+                    {stat.num}
+                  </div>
+                  <div className="text-xs font-semibold text-white">{stat.label}</div>
+                  <div className="text-[11px] text-slate-400 mt-0.5 font-mono">{stat.sub}</div>
                 </div>
               ))}
             </motion.div>
@@ -140,229 +184,283 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services */}
+      <LogoMarquee />
+
       <section className="section-padding">
         <div className="container-narrow">
           <SectionHeading
-            label="Our Services"
-            title="Everything your practice needs to grow online"
-            description="From website design to patient lead generation, we provide end-to-end digital marketing solutions tailored for healthcare."
+            label="What We Build & Deliver"
+            title="End-to-end digital solutions for modern brands"
+            description="From high-converting practice websites to 3D exhibition booth designs, live booth mini-games, and custom fintech platforms."
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, i) => (
-              <motion.div
-                key={service.title}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                className="group bg-card rounded-2xl p-7 border border-border hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
-              >
-                <div className="w-11 h-11 rounded-xl gradient-primary flex items-center justify-center mb-5">
-                  <service.icon size={20} className="text-primary-foreground" />
-                </div>
-                <h3 className="font-heading font-semibold text-lg text-heading mb-2">{service.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{service.desc}</p>
-              </motion.div>
-            ))}
+
+          <div className="grid lg:grid-cols-12 gap-6 mt-12">
+            {bentoServices.map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.title}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  className={`${service.cols} glass-card glass-card-hover rounded-3xl p-8 border border-indigo-500/20 relative overflow-hidden flex flex-col justify-between group`}
+                >
+                  <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${service.color} blur-3xl rounded-full pointer-events-none`} />
+
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 backdrop-blur-md flex items-center justify-center border border-indigo-500/20 group-hover:scale-110 transition-transform">
+                        <Icon size={22} className="text-indigo-400" />
+                      </div>
+                      <span className="text-[11px] font-semibold px-3 py-1 rounded-full bg-slate-800/80 border border-indigo-500/20 text-indigo-300 font-mono">
+                        {service.tag}
+                      </span>
+                    </div>
+
+                    <h3 className="font-heading font-bold text-2xl text-white mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-slate-300 text-sm leading-relaxed max-w-md">
+                      {service.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-6 relative z-10 flex items-center gap-2 text-xs font-semibold text-emerald-400 group-hover:gap-3 transition-all">
+                    <span>Explore capability</span>
+                    <ArrowRight size={14} />
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
+
           <div className="text-center mt-10">
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-indigo-400 hover:text-emerald-400 transition-colors"
             >
-              View All Services <ArrowRight size={16} />
+              Explore All Services <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-  {/* Why Choose Us */}
-<section className="w-full py-24 bg-gradient-to-b from-[#F5EFE7] via-white to-[#FDECEF]">
-  <div className="px-6 lg:px-12 xl:px-20 2xl:px-32">
+      <section className="section-padding bg-slate-950/60 border-y border-indigo-500/15">
+        <div className="container-narrow">
+          <SectionHeading
+            label="Why Partner With Sociocraft"
+            title="Engineered for measurable impact"
+            description="We bridge the gap between technical excellence, spatial design, and patient/client acquisition."
+          />
 
-    {/* Heading */}
-    <div className="text-center mb-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        <span className="inline-block px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-[#E8AEB7] bg-[#F3C5CB]/30 rounded-full mb-4">
-          Why Sociocraft
-        </span>
-
-        <h2 className="font-heading font-bold text-4xl md:text-5xl text-black leading-tight">
-          Built for healthcare,
-          <span className="block bg-gradient-to-r from-[#E8AEB7] to-[#F3C5CB] bg-clip-text text-transparent">
-            driven by results
-          </span>
-        </h2>
-
-        <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-          We help doctors and clinics grow with strategies that are ethical, data-driven, and focused on real patient acquisition.
-        </p>
-      </motion.div>
-    </div>
-
-    {/* Cards */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {whyChoose.map((item, i) => (
-        <motion.div
-          key={item.title}
-          custom={i}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="bg-white/80 backdrop-blur-md border border-[#F3C5CB] p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-        >
-          {/* Icon */}
-          <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-[#FDECEF] mb-5">
-            <item.icon size={22} className="text-[#E8AEB7]" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {whyChooseUs.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.title}
+                  custom={i}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeUp}
+                  className="glass-card glass-card-hover p-7 rounded-3xl border border-indigo-500/20 bg-slate-900/40"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+                    <Icon size={22} className="text-emerald-400" />
+                  </div>
+                  <h3 className="font-heading font-bold text-lg text-white mb-2">{item.title}</h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">{item.desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
+        </div>
+      </section>
 
-          {/* Title */}
-          <h3 className="font-heading font-semibold text-lg text-black mb-2">
-            {item.title}
-          </h3>
+      <section className="container-narrow py-6">
+        <GrowthCalculator />
+      </section>
 
-          {/* Description */}
-          <p className="text-sm text-gray-600 leading-relaxed">
-            {item.desc}
-          </p>
-        </motion.div>
-      ))}
-    </div>
-
-  </div>
-</section>
-
-      {/* Case Study Preview */}
       <section className="section-padding">
         <div className="container-narrow">
           <SectionHeading
-            label="Case Study"
-            title="Real results for real practices"
+            label="Featured Projects"
+            title="Real results for industry leaders"
+            description="Explore how we empower clinics, exhibition leaders, live brand activations, and stock advisory practices."
           />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-           className="grid lg:grid-cols-2 gap-0 rounded-3xl overflow-hidden bg-white shadow-lg border border-[#F3C5CB]"
-          >
-           <div className="p-10 md:p-14 flex flex-col justify-center bg-gradient-to-br from-[#F5EFE7] to-white">
-              <span className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">Featured Client</span>
-              <h3 className="font-heading font-bold text-2xl md:text-3xl text-heading mb-4">Dr Gaurav Neurospine</h3>
-              <p className="text-body leading-relaxed mb-6">
-                Sociocraft helped Dr. Gaurav Neurospine establish a strong digital presence with a professional website, optimized SEO, and lead generation strategies that improved online patient engagement.
-              </p>
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                {[
-                  { label: "Website", value: "Built" },
-                  { label: "SEO Rank", value: "Top 3" },
-                  { label: "Leads", value: "+180%" },
-                ].map((s) => (
-                  <div key={s.label} className="text-center">
-                    <div className="font-heading font-bold text-lg gradient-text">{s.value}</div>
-                    <div className="text-xs text-muted-foreground">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="https://drgauravneurospine.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold bg-gradient-to-r from-[#E8AEB7] to-[#F3C5CB] text-black rounded-xl shadow-md hover:scale-105 transition-all"
-                >
-                  Visit Website <ArrowRight size={14} />
-                </a>
-                <Link
-                  to="/case-studies"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-muted-foreground border border-border rounded-lg hover:bg-muted transition-colors"
-                >
-                  View Case Studies
-                </Link>
-              </div>
-            </div>
-           <div className="flex items-center justify-center p-8">
-  <div className="w-full  rounded-2xl overflow-hidden shadow-2xl border border-[#F3C5CB] bg-white hover:scale-105 transition-transform duration-300">
-    
-    {/* Browser top bar */}
-    <div className="h-6 bg-[#FDECEF] flex items-center gap-2 px-3">
-      <div className="w-2.5 h-2.5 rounded-full bg-red-300" />
-      <div className="w-2.5 h-2.5 rounded-full bg-yellow-300" />
-      <div className="w-2.5 h-2.5 rounded-full bg-green-300" />
-    </div>
 
-    {/* Screenshot */}
-    <img
-      src="/dr-gaurav-site.png"   // put your screenshot in public folder
-      alt="Dr Gaurav Neurospine website"
-      className="w-full object-cover"
-    />
-  </div>
-</div>
-          </motion.div>
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            {[
+              {
+                id: "dr-gaurav",
+                title: "Dr Gaurav Neurospine",
+                category: "Healthcare Digital Transformation",
+                desc: "Complete digital marketing overhaul & website for a leading neurospine clinic, resulting in +180% patient lead surge.",
+                badge: "Healthcare",
+                image: "/dr-gaurav-site.png",
+                placeholderName: "public/dr-gaurav-site.png",
+                link: "https://drgauravneurospine.com/",
+                linkText: "Visit Website",
+                isExternal: true
+              },
+              {
+                id: "elite-eventures",
+                title: "Elite Eventures",
+                category: "Exhibition Stand 3D Design",
+                desc: "Top-notch exhibition stand design company in India (15+ yrs) overseeing concept development, 3D design, construction & dismantling.",
+                badge: "Exhibition Stand Design",
+                image: "/elite-eventures.png",
+                placeholderName: "public/elite-eventures.png",
+                link: "https://www.eliteeventure.com/",
+                linkText: "Visit Website",
+                isExternal: true
+              },
+              {
+                id: "dr-rashel",
+                title: "DR-RASHEL Hydration Game",
+                category: "Interactive Brand Activation",
+                desc: "Custom-branded interactive mini-game built for live exhibition booths to pull massive foot traffic and create a memorable brand moment.",
+                badge: "Live Booth Gamification",
+                image: "/dr-rashel-game.png",
+                placeholderName: "public/dr-rashel-game.png",
+                link: "http://dr-rashel-game.vercel.app",
+                linkText: "Play Live Game Demo",
+                isExternal: true
+              },
+              {
+                id: "wealthmine",
+                title: "Wealthmine Advisory Firm",
+                category: "NSE & BSE Automation Platform",
+                desc: "AI & Keyword-based stock intelligence platform that automatically fetches NSE/BSE corporate announcements, classifies corporate actions, extracts key data, and populates Excel models for Wealthmine Advisory Firm.",
+                badge: "NSE & BSE Automation",
+                image: "/wealthmine-advisory.png",
+                placeholderName: "public/wealthmine-advisory.png",
+                link: "/case-studies",
+                linkText: "View Case Study",
+                isExternal: false
+              }
+            ].map((p, idx) => (
+              <motion.div
+                key={p.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="glass-card glass-card-hover rounded-3xl overflow-hidden border border-indigo-500/20 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="bg-slate-950 p-4 border-b border-indigo-500/20">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+                      </div>
+                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 font-mono">
+                        {p.badge}
+                      </span>
+                    </div>
+
+                    <div className="rounded-xl overflow-hidden shadow-2xl bg-black min-h-[220px] flex items-center justify-center relative border border-white/10">
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          target.style.display = "none";
+                          const parent = target.parentElement;
+                          if (parent && !parent.querySelector(".fallback-box")) {
+                            const fallback = document.createElement("div");
+                            fallback.className =
+                              "fallback-box w-full py-14 px-4 bg-gradient-to-br from-[#0A0F1D] to-[#0F172A] flex flex-col items-center justify-center text-center";
+                            fallback.innerHTML = `<div className="text-xs text-slate-300 font-mono bg-slate-900/90 px-3.5 py-2 rounded-xl border border-indigo-500/30">Please add photo as: <strong className="text-emerald-400">${p.placeholderName}</strong></div>`;
+                            parent.appendChild(fallback);
+                          }
+                        }}
+                        className="w-full h-[240px] object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="p-7 space-y-2">
+                    <h3 className="font-heading font-bold text-2xl text-white">
+                      {p.title}
+                    </h3>
+                    <p className="text-slate-300 text-sm leading-relaxed">
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-7 pt-0 flex items-center justify-between gap-3">
+                  {p.isExternal ? (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-glow bg-indigo-600/30 hover:bg-indigo-600/50 text-white text-xs md:text-sm py-2.5 px-5 rounded-xl flex items-center gap-2 border border-indigo-500/30"
+                    >
+                      <span>{p.linkText}</span>
+                      <ExternalLink size={14} />
+                    </a>
+                  ) : (
+                    <Link
+                      to={p.link}
+                      className="btn-glow bg-indigo-600/30 hover:bg-indigo-600/50 text-white text-xs md:text-sm py-2.5 px-5 rounded-xl flex items-center gap-2 border border-indigo-500/30"
+                    >
+                      <span>{p.linkText}</span>
+                      <ArrowRight size={14} />
+                    </Link>
+                  )}
+
+                  <Link
+                    to="/case-studies"
+                    className="text-xs font-semibold text-emerald-400 hover:underline"
+                  >
+                    View Details →
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/case-studies"
+              className="btn-glow gradient-primary text-white py-4 px-8 rounded-full text-sm font-semibold shadow-xl inline-flex items-center gap-2"
+            >
+              <span>View All Projects & Case Studies</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="section-padding bg-muted/50">
+      <section className="section-padding bg-slate-950/80 border-y border-indigo-500/15">
         <div className="container-narrow">
-          <SectionHeading label="Testimonials" title="What our clients say" />
+          <SectionHeading label="Client Trust & Performance" title="What our partners say" />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="max-w-2xl mx-auto bg-card rounded-2xl p-8 md:p-12 border border-border text-center"
+            className="max-w-3xl mx-auto glass-card rounded-3xl p-8 md:p-12 border border-indigo-500/25 text-center relative bg-slate-900/60"
           >
-            <Quote size={32} className="text-primary/20 mx-auto mb-6" />
-            <p className="text-lg md:text-xl text-heading font-medium leading-relaxed mb-6">
-              "Sociocraft helped us increase patient inquiries through digital marketing and SEO. Their healthcare-focused approach made all the difference."
+            <Quote size={40} className="text-indigo-400/30 mx-auto mb-6" />
+            <p className="text-lg md:text-2xl text-white font-medium leading-relaxed mb-6">
+              "Sociocraft delivered results beyond expectations — from healthcare patient lead acquisition to interactive booth experiences, their digital execution is outstanding."
             </p>
             <div className="flex items-center justify-center gap-1 mb-3">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={16} className="fill-primary text-primary" />
+                <Star key={i} size={18} className="fill-amber-400 text-amber-400" />
               ))}
             </div>
-            <p className="text-sm font-semibold text-heading">Healthcare Professional</p>
-            <p className="text-xs text-muted-foreground">Verified Client</p>
+            <p className="text-base font-bold text-white">Verified Client</p>
+            <p className="text-xs text-slate-400 font-mono">Healthcare & Enterprise Partner</p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-     <section className="section-padding">
-        <div className="container-narrow">
-
-          <div className="relative rounded-3xl p-16 text-center bg-gradient-to-br from-[#E8AEB7] to-[#F3C5CB] shadow-xl overflow-hidden">
-
-            {/* glow */}
-            <div className="absolute w-72 h-72 bg-white/20 blur-3xl rounded-full -top-10 -left-10"></div>
-
-            <h2 className="text-4xl font-bold text-black mb-4">
-             Ready to grow your clinic online?
-            </h2>
-
-            <p className="text-gray-700 mb-8">
-             Let's discuss how Sociocraft can help your practice attract more patients.
-            </p>
-
-            <Link
-              to="/contact"
-              className="px-8 py-4 bg-black text-white rounded-xl hover:scale-105 transition-all shadow-lg"
-            >
-              Book Consultation →
-            </Link>
-
-          </div>
-
         </div>
       </section>
 
