@@ -11,12 +11,24 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
           {/* Brand */}
-          <div>
-            <h3 className="font-heading font-bold text-xl text-white mb-4">
-  Socio<span className="text-[#E8AEB7]">Kraft</span>
-</h3>
-            <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              Crafting digital growth for healthcare brands. Ethical, guideline-based digital marketing for doctors, clinics, and hospitals.
+          <div className="space-y-4">
+            <Link to="/" className="flex flex-col text-left group">
+              <span className="font-heading font-black text-2xl tracking-tight text-white group-hover:scale-[1.02] transition-transform">
+                Socio<span className="bg-gradient-to-r from-purple-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">Kraft</span>
+              </span>
+
+              {/* Tagline Accent Rule */}
+              <div className="flex items-center gap-1.5 mt-1 max-w-xs">
+                <div className="h-[1.5px] w-4 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full" />
+                <span className="text-[8px] tracking-[0.16em] font-mono text-slate-300 font-bold uppercase">
+                  Digital Growth & Engineering Agency
+                </span>
+                <div className="h-[1.5px] w-4 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full" />
+              </div>
+            </Link>
+
+            <p className="text-sm text-slate-400 leading-relaxed max-w-xs pt-1">
+              Crafting high-converting practice websites, 3D exhibition stands, interactive booth games & custom fintech platforms.
             </p>
           </div>
 
@@ -85,35 +97,35 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-       <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
 
-  <p className="text-xs text-gray-500">
-    © {new Date().getFullYear()} Sociocraft. All rights reserved.
-  </p>
+          <p className="text-xs text-gray-500">
+            © {new Date().getFullYear()} Sociocraft. All rights reserved.
+          </p>
 
-  {/* FIX: wrap this */}
-  <div className="flex items-center gap-6">
-    {[
-      { name: "LinkedIn", url: "https://linkedin.com" },
-      { name: "Instagram", url: "https://www.instagram.com/sociokraft_" },
-      {
-        name: "WhatsApp",
-        url: "https://wa.me/918169767685?text=Hello%20Sociokraft%2C%20I%20want%20to%20know%20more%20about%20your%20services."
-      },
-    ].map((social) => (
-      <a
-        key={social.name}
-        href={social.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-xs text-gray-500 hover:text-[#E8AEB7] transition-colors"
-      >
-        {social.name}
-      </a>
-    ))}
-  </div>
+          {/* FIX: wrap this */}
+          <div className="flex items-center gap-6">
+            {[
+              { name: "LinkedIn", url: "https://linkedin.com" },
+              { name: "Instagram", url: "https://www.instagram.com/sociokraft_" },
+              {
+                name: "WhatsApp",
+                url: "https://wa.me/918169767685?text=Hello%20Sociokraft%2C%20I%20want%20to%20know%20more%20about%20your%20services."
+              },
+            ].map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-500 hover:text-[#E8AEB7] transition-colors"
+              >
+                {social.name}
+              </a>
+            ))}
+          </div>
 
-</div>
+        </div>
       </div>
     </footer>
   );
