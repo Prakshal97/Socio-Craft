@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Sparkles, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -29,28 +29,28 @@ const Header = () => {
       <div
         className={`w-full flex items-center justify-between rounded-2xl md:rounded-full transition-all duration-300 ${
           scrolled
-            ? "bg-[#0A0F1D]/90 backdrop-blur-xl border border-indigo-500/25 shadow-2xl shadow-indigo-950/50 py-3 px-5 md:px-7"
-            : "bg-[#0A0F1D]/75 backdrop-blur-md border border-white/10 py-3.5 px-5 md:px-7"
+            ? "bg-[#F5F3EF]/90 backdrop-blur-xl border border-line shadow-md py-3 px-5 md:px-7"
+            : "bg-[#F5F3EF]/80 backdrop-blur-md border border-line py-3.5 px-5 md:px-7"
         }`}
       >
         {/* Logo */}
         <Link to="/" className="flex flex-col text-left group">
-          <span className="font-heading font-black text-xl md:text-2xl tracking-tight text-white group-hover:scale-[1.02] transition-transform">
-            Socio<span className="bg-gradient-to-r from-purple-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">Kraft</span>
+          <span className="font-heading font-bold text-xl md:text-2xl tracking-tight text-ink group-hover:scale-[1.02] transition-transform">
+            Socio<span className="text-ink">Kraft</span>
           </span>
 
-          {/* Glowing Accent Subtitle Line */}
+          {/* Subtitle Line */}
           <div className="hidden sm:flex items-center gap-1.5 mt-0.5">
-            <div className="h-[1.5px] w-3 bg-gradient-to-r from-purple-500 to-cyan-400 rounded-full" />
-            <span className="text-[7.5px] tracking-[0.18em] font-mono text-slate-300 font-bold uppercase">
+            <div className="h-[1.5px] w-3 bg-ink/30 rounded-full" />
+            <span className="text-[7.5px] tracking-[0.18em] font-mono text-taupe font-semibold uppercase">
               Digital Growth & Engineering Agency
             </span>
-            <div className="h-[1.5px] w-3 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full" />
+            <div className="h-[1.5px] w-3 bg-ink/30 rounded-full" />
           </div>
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center gap-1.5 bg-slate-900/60 p-1.5 rounded-full border border-indigo-500/20">
+        <nav className="hidden md:flex items-center gap-1.5 bg-card p-1.5 rounded-full border border-line shadow-xs">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             return (
@@ -59,8 +59,8 @@ const Header = () => {
                 to={link.path}
                 className={`relative px-4 py-1.5 text-xs md:text-sm font-semibold rounded-full transition-all duration-200 ${
                   isActive
-                    ? "text-white bg-indigo-600 shadow-md shadow-indigo-500/30"
-                    : "text-slate-300 hover:text-white hover:bg-white/10"
+                    ? "text-white bg-ink shadow-xs"
+                    : "text-taupe hover:text-ink hover:bg-stone-50"
                 }`}
               >
                 {link.label}
@@ -73,7 +73,7 @@ const Header = () => {
         <div className="hidden md:flex items-center gap-3">
           <Link
             to="/contact"
-            className="btn-glow gradient-primary text-white text-xs md:text-sm py-2.5 px-5 rounded-full shadow-lg flex items-center gap-2"
+            className="bg-ink hover:bg-black text-white text-xs md:text-sm py-2.5 px-5 rounded-full shadow-sm hover:shadow transition-all flex items-center gap-2 font-semibold"
           >
             <span>Get Consultation</span>
             <ArrowRight size={14} />
@@ -82,7 +82,7 @@ const Header = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 text-white hover:text-indigo-400 transition-colors"
+          className="md:hidden p-2 text-ink hover:text-black transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -97,7 +97,7 @@ const Header = () => {
             initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
-            className="md:hidden mt-3 rounded-2xl bg-[#0A0F1D]/95 backdrop-blur-2xl border border-indigo-500/30 p-5 shadow-2xl overflow-hidden"
+            className="md:hidden mt-3 rounded-2xl bg-card/95 backdrop-blur-2xl border border-line p-5 shadow-xl overflow-hidden"
           >
             <nav className="flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -107,8 +107,8 @@ const Header = () => {
                   onClick={() => setMobileOpen(false)}
                   className={`px-4 py-3 text-sm font-semibold rounded-xl transition-all ${
                     location.pathname === link.path
-                      ? "text-white bg-indigo-600/30 border border-indigo-500/40"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
+                      ? "text-white bg-ink"
+                      : "text-taupe hover:text-ink hover:bg-stone-50"
                   }`}
                 >
                   {link.label}
@@ -117,7 +117,7 @@ const Header = () => {
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 text-center py-3.5 font-semibold text-sm gradient-primary text-white rounded-xl shadow-lg flex items-center justify-center gap-2"
+                className="mt-2 text-center py-3.5 font-semibold text-sm bg-ink hover:bg-black text-white rounded-xl shadow-md flex items-center justify-center gap-2"
               >
                 <span>Get Free Consultation</span>
                 <ArrowRight size={16} />
@@ -131,4 +131,3 @@ const Header = () => {
 };
 
 export default Header;
-

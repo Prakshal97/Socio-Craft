@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,77 +6,114 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;          /* Deep Cyber Navy #0A0F1D */
-    --foreground: 210 40% 98%;
+    --stone: #F5F3EF;
+    --ink: #1C1B19;
+    --taupe: #6B6560;
+    --bronze: #8A7B5C;
+    --bronze-hover: #73664B;
+    --line: #E4E0D8;
+    --card: #FFFFFF;
 
-    --card: 222 40% 9%;               /* Dark Navy Slate #0F172A */
-    --card-foreground: 210 40% 98%;
+    --background: 40 18% 95%; /* #F5F3EF */
+    --foreground: 40 6% 11%;   /* #1C1B19 */
 
-    --popover: 222 40% 9%;
-    --popover-foreground: 210 40% 98%;
+    --card: 0 0% 100%;        /* #FFFFFF */
+    --card-foreground: 40 6% 11%;
 
-    --primary: 239 84% 67%;           /* Electric Indigo #6366F1 */
-    --primary-end: 160 84% 39%;       /* Glowing Emerald #10B981 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 40 6% 11%;
 
-    --secondary: 217 33% 15%;
-    --secondary-foreground: 210 40% 98%;
+    --primary: 41 20% 45%;    /* #8A7B5C */
+    --primary-foreground: 40 18% 95%;
+    --primary-end: 41 20% 35%;
 
-    --muted: 217 33% 12%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --secondary: 40 12% 91%;  /* #EAE6DE */
+    --secondary-foreground: 40 6% 11%;
 
-    --accent: 187 92% 43%;            /* Cyber Cyan #06B6D4 */
-    --accent-foreground: 210 40% 98%;
+    --muted: 40 14% 93%;
+    --muted-foreground: 30 6% 40%; /* #6B6560 */
 
-    --border: 222 35% 16%;
-    --input: 222 35% 16%;
-    --ring: 239 84% 67%;
+    --accent: 41 20% 45%;
+    --accent-foreground: 40 18% 95%;
 
-    --heading: 210 40% 98%;
-    --body: 215 20.2% 82%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 40 14% 87%;     /* #E4E0D8 */
+    --input: 40 14% 87%;
+    --ring: 41 20% 45%;
+
+    --heading: 40 6% 11%;     /* #1C1B19 */
+    --body: 30 6% 40%;        /* #6B6560 */
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-line;
   }
+
   body {
-    @apply bg-[#0A0F1D] text-body font-body antialiased selection:bg-indigo-500/30 selection:text-white overflow-x-hidden;
+    background-color: var(--stone);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
+
+  ::selection {
+    background-color: #8A7B5C;
+    color: #FFFFFF;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-heading tracking-tight;
+    color: var(--ink);
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
-  /* Glassmorphism Cards - Cyber Navy */
+  /* Warm Stone Card with subtle lift off the stone base */
   .glass-card {
-    @apply bg-slate-900/40 backdrop-blur-xl border border-indigo-500/15 shadow-2xl transition-all duration-300;
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 3px rgba(28, 27, 25, 0.02), 0 4px 12px rgba(28, 27, 25, 0.03);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .glass-card-hover {
-    @apply hover:bg-slate-900/70 hover:border-emerald-400/40 hover:shadow-indigo-500/10 hover:-translate-y-1;
+    @apply hover:border-bronze/50 hover:shadow-lg hover:-translate-y-1;
   }
 
   .glass-pill {
-    @apply bg-indigo-950/40 backdrop-blur-md border border-indigo-500/20 shadow-lg;
+    background-color: #FFFFFF;
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 2px rgba(28, 27, 25, 0.04);
   }
 
-  /* Shimmering Cyber Gradient Text */
+  /* Bronze Accent Action Buttons */
   .gradient-primary {
-    @apply bg-gradient-to-r from-[#6366F1] via-[#8B5CF6] to-[#10B981];
+    background-color: #8A7B5C;
+    color: #FFFFFF;
+    transition: all 0.2s ease;
   }
 
+  .gradient-primary:hover {
+    background-color: #73664B;
+  }
+
+  /* Muted Bronze / Ink Accents */
   .gradient-text {
-    @apply bg-gradient-to-r from-[#818CF8] via-[#C084FC] to-[#34D399] bg-clip-text text-transparent;
+    color: #8A7B5C;
   }
 
   .gradient-emerald {
-    @apply bg-gradient-to-r from-[#10B981] via-[#06B6D4] to-[#6366F1] bg-clip-text text-transparent;
+    color: #8A7B5C;
   }
 
   .gradient-heading {
-    @apply bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent;
+    color: #1C1B19;
   }
 
   .section-padding {
@@ -87,32 +124,44 @@
     @apply w-full px-6 md:px-10 lg:px-16 xl:px-24 mx-auto max-w-7xl;
   }
 
-  /* Glowing Button */
+  /* Bronze Action Button */
   .btn-glow {
-    @apply relative inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-indigo-500/25 hover:scale-[1.02] active:scale-[0.98];
+    background-color: #8A7B5C;
+    color: #FFFFFF;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(138, 123, 92, 0.25);
+  }
+
+  .btn-glow:hover {
+    background-color: #73664B;
+    box-shadow: 0 4px 14px rgba(138, 123, 92, 0.35);
   }
 }
 
-/* Cyber Emerald & Indigo Ambient Glow */
+/* Subtle warm ambient tint */
 .aurora-glow-1 {
-  background: radial-gradient(circle, rgba(99,102,241,0.22) 0%, rgba(139,92,246,0.12) 50%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(138, 123, 92, 0.08) 0%, rgba(228, 224, 216, 0.04) 50%, rgba(245, 243, 239, 0) 70%);
 }
 
 .aurora-glow-2 {
-  background: radial-gradient(circle, rgba(16,185,129,0.20) 0%, rgba(6,182,212,0.12) 50%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(circle, rgba(138, 123, 92, 0.06) 0%, rgba(228, 224, 216, 0.03) 50%, rgba(245, 243, 239, 0) 70%);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #0A0F1D;
+  background: #F5F3EF;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
-  border-radius: 4px;
+  background: #E4E0D8;
+  border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #8A7B5C;
 }

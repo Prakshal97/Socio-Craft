@@ -18,6 +18,29 @@ export default {
         body: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
+        stone: {
+          DEFAULT: "#F5F3EF",
+          50: "#FAF9F6",
+          100: "#F5F3EF",
+          200: "#EAE6DE",
+        },
+        ink: {
+          DEFAULT: "#1C1B19",
+          muted: "#353330",
+        },
+        taupe: {
+          DEFAULT: "#6B6560",
+          light: "#8C857E",
+        },
+        bronze: {
+          DEFAULT: "#8A7B5C",
+          hover: "#73664B",
+          dark: "#5E533C",
+          light: "#F7F5F0",
+        },
+        line: {
+          DEFAULT: "#E4E0D8",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -53,16 +76,6 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
         },
       },
       borderRadius: {

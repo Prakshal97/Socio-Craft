@@ -25,9 +25,9 @@ const clientLogos = [
 
 const LogoMarquee = () => {
   return (
-    <div className="w-full bg-slate-950 py-8 border-y border-indigo-500/20 overflow-hidden backdrop-blur-xl">
+    <div className="w-full bg-stone-100/60 py-8 border-y border-line overflow-hidden">
       <div className="container-narrow mb-4 text-center">
-        <span className="text-[11px] font-mono uppercase tracking-widest text-indigo-300 bg-indigo-500/10 px-3.5 py-1 rounded-full border border-indigo-500/20">
+        <span className="text-[11px] font-mono uppercase tracking-widest text-taupe bg-white px-3.5 py-1 rounded-full border border-line">
           Trusted Industry Leaders & Client Partners
         </span>
       </div>
@@ -41,10 +41,13 @@ const LogoMarquee = () => {
           {[...clientLogos, ...clientLogos, ...clientLogos].map((client, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-4 bg-slate-900/90 border border-indigo-500/30 px-6 py-3.5 rounded-2xl hover:border-emerald-400/60 hover:bg-slate-900 transition-all duration-300 shadow-xl group"
+              className="flex items-center gap-4 bg-card border border-line px-6 py-3.5 rounded-2xl hover:border-bronze/50 transition-all duration-300 shadow-xs group"
             >
-              {/* Dark Logo Container for high contrast with white/light logo art */}
-              <div className="h-12 px-4 py-1.5 bg-slate-950 rounded-xl border border-white/10 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform">
+              <div
+                className={`h-12 px-4 py-1.5 rounded-xl border border-line flex items-center justify-center group-hover:scale-105 transition-transform ${
+                  client.name === "Elite Eventures" ? "bg-[#141311]" : "bg-stone-50"
+                }`}
+              >
                 <img
                   src={client.logo}
                   alt={client.name}
@@ -52,18 +55,18 @@ const LogoMarquee = () => {
                     const target = e.currentTarget;
                     target.style.display = "none";
                     if (target.parentElement) {
-                      target.parentElement.innerHTML = `<span className="font-heading font-extrabold text-sm text-white">${client.name}</span>`;
+                      target.parentElement.innerHTML = `<span className="font-heading font-bold text-sm text-ink">${client.name}</span>`;
                     }
                   }}
-                  className="max-h-9 max-w-[140px] object-contain filter contrast-125"
+                  className="max-h-9 max-w-[140px] object-contain"
                 />
               </div>
 
               <div className="flex flex-col text-left">
-                <span className="font-heading font-bold text-sm text-white group-hover:text-emerald-400 transition-colors">
+                <span className="font-heading font-bold text-sm text-ink group-hover:text-bronze transition-colors">
                   {client.name}
                 </span>
-                <span className="text-xs text-emerald-400/90 font-medium">
+                <span className="text-xs text-taupe font-medium">
                   {client.category}
                 </span>
               </div>
