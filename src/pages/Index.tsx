@@ -415,21 +415,21 @@ export default function Index() {
             className="absolute -left-20 top-28 h-96 w-96 rounded-full bg-[#fcd4dc]/70 pointer-events-none blur-sm"
           />
 
-          <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-5 lg:grid-cols-[1.05fr_1fr]">
+          <div className="relative mx-auto grid max-w-[1440px] items-center gap-8 px-4 sm:px-6 lg:px-[108px] lg:grid-cols-[1.1fr_1fr]">
             {/* Left Column Content */}
-            <div className="max-w-xl">
+            <div className="max-w-2xl">
               {/* Badge pills */}
               <div className="mb-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-navy px-4 py-1 text-xs font-bold uppercase tracking-widest text-cream">
+                <span className="rounded-full bg-navy px-4 py-1 text-[13.5px] font-bold uppercase tracking-widest text-cream">
                   Personal branding for doctors
                 </span>
-                <span className="rounded-full border-2 border-navy bg-white px-3.5 py-1 text-xs font-bold text-navy">
+                <span className="rounded-full border-2 border-navy bg-white px-3.5 py-1 text-[13.5px] font-bold text-navy">
                   🎬 Reels · 📱 Social · 🌐 Websites
                 </span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-[2.75rem] font-black leading-[0.96] tracking-tight sm:text-5xl lg:text-[5rem] text-navy">
+              <h1 className="text-[2.875rem] font-black leading-[0.96] tracking-tight sm:text-[50px] lg:text-[82px] text-navy">
                 <span className="mr-3 inline-block">Great</span>
                 <span className="mr-3 inline-block">Doctors</span>
                 <br />
@@ -444,12 +444,12 @@ export default function Index() {
               </h1>
 
               {/* Ocean Blue Subheadline */}
-              <p className="mt-4 text-xl font-bold text-ocean md:text-2xl">
+              <p className="mt-4 text-[22px] font-bold text-ocean md:text-[26px]">
                 Your expertise changes lives. We help the digital world see it.
               </p>
 
               {/* Lead Paragraph */}
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+              <p className="mt-3 text-[15.5px] leading-relaxed text-muted-foreground md:text-[18px]">
                 Sociokraft builds powerful personal brands for doctors through strategic content,
                 premium video production, social media management, and professional digital
                 experiences that turn expertise into trust.
@@ -460,32 +460,32 @@ export default function Index() {
                 <button
                   type="button"
                   onClick={() => setAuditModalOpen(true)}
-                  className="btn-pill-coral px-6 py-3.5 text-base font-bold"
+                  className="btn-pill-coral px-6 py-3.5 text-[17.5px] font-bold"
                 >
                   Claim Your Free Digital Audit
                 </button>
                 <a
                   href="#work"
-                  className="btn-pill-card px-6 py-3.5 text-base font-bold"
+                  className="btn-pill-card px-6 py-3.5 text-[17.5px] font-bold"
                 >
                   Explore Our Work
                 </a>
               </div>
 
-              <p className="mt-2.5 text-xs text-muted-foreground">
+              <p className="mt-2.5 text-[13.5px] text-muted-foreground">
                 No obligation. Just a conversation about your digital growth.
               </p>
 
               <a
                 href="#transformation"
-                className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-navy underline decoration-coral decoration-2 underline-offset-4 hover:text-ocean"
+                className="mt-3 inline-flex items-center gap-2 text-[15.5px] font-bold text-navy underline decoration-coral decoration-2 underline-offset-4 hover:text-ocean"
               >
                 See How We Grow Doctor Brands →
               </a>
             </div>
 
             {/* Right Collage Visual (Exact layout matching Lovable reference) */}
-            <div className="relative mx-auto h-[480px] w-full max-w-[560px] sm:h-[560px]">
+            <div className="relative mx-auto lg:mr-0 lg:ml-auto h-[480px] w-full max-w-[530px] sm:h-[560px]">
               {/* Yellow glow behind dentist card */}
               <div
                 aria-hidden="true"
@@ -628,7 +628,7 @@ export default function Index() {
               </div>
 
               {/* 7. Rotating Yellow Circular Seal: Pinned to the top-right corner of Reach Trend */}
-              <div className="absolute -right-2 top-[44%] z-30 hidden h-24 w-24 sm:block animate-spin-slow pointer-events-none" aria-hidden="true">
+              <div className="absolute right-0 top-[44%] z-30 hidden h-24 w-24 sm:block animate-spin-slow pointer-events-none" aria-hidden="true">
                 <svg viewBox="0 0 100 100" className="h-full w-full">
                   <defs>
                     <path id="sealPath" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
@@ -660,7 +660,7 @@ export default function Index() {
         {/* SECTION 2: NAVY VALUE BAR */}
         {/* ============================================================== */}
         <section className="bg-navy py-6 md:py-8 text-cream">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-5 lg:flex-row lg:justify-between">
+          <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-4 sm:px-6 lg:px-[108px] lg:flex-row lg:justify-between">
             <div className="flex items-center gap-3 shrink-0">
               <div className="flex gap-1 text-sunny shrink-0">
                 {[...Array(3)].map((_, i) => (
@@ -715,7 +715,7 @@ export default function Index() {
         {/* SECTION 4: THE PROBLEM */}
         {/* ============================================================== */}
         <section className="relative bg-peach py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -834,7 +834,7 @@ export default function Index() {
         {/* SECTION 5: THE TRANSFORMATION (Interactive Slider) */}
         {/* ============================================================== */}
         <section id="transformation" className="bg-card py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div className="text-center">
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy bg-mint">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -994,7 +994,7 @@ export default function Index() {
         {/* SECTION 6: OUR SERVICES */}
         {/* ============================================================== */}
         <section id="services" className="bg-cream py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy bg-lavender">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -1358,7 +1358,7 @@ export default function Index() {
             />
           </svg>
 
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
@@ -1520,7 +1520,7 @@ export default function Index() {
         {/* SECTION 8: OUR WORK (DIGITAL PEHCHAAN IN ACTION) */}
         {/* ============================================================== */}
         <section id="work" className="bg-sand py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -2005,7 +2005,7 @@ export default function Index() {
         {/* SECTION 11: CONTENT CREATION WORKSPACE */}
         {/* ============================================================== */}
         <section className="bg-lemon py-20 md:py-28 text-navy">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
               <div>
                 <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
@@ -2158,7 +2158,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="relative mx-auto max-w-7xl px-5 pt-12">
+          <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px] pt-12">
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.25em] text-sunny">
                 Social media content gallery
@@ -2216,7 +2216,7 @@ export default function Index() {
         {/* SECTION 13: PRICING & PACKAGES */}
         {/* ============================================================== */}
         <section id="pricing" className="bg-peach py-20 md:py-28 text-navy">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div className="text-center">
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -2479,7 +2479,7 @@ export default function Index() {
             <path fill="currentColor" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" />
           </svg>
 
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -2558,7 +2558,7 @@ export default function Index() {
         {/* SECTION 15: CLIENT STORIES */}
         {/* ============================================================== */}
         <section className="relative bg-card py-20 md:py-28 text-navy">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy bg-pink">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -2625,7 +2625,7 @@ export default function Index() {
         {/* SECTION 16: MEET THE TEAM */}
         {/* ============================================================== */}
         <section id="team" className="relative overflow-hidden bg-lavender py-20 md:py-28 text-navy">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -2682,7 +2682,7 @@ export default function Index() {
         {/* SECTION 17: SPECIAL CAMPAIGNS & OFFERS (TICKETS) */}
         {/* ============================================================== */}
         <section className="bg-cream py-20 md:py-28 text-navy">
-          <div className="mx-auto max-w-7xl px-5">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -2767,7 +2767,7 @@ export default function Index() {
         {/* SECTION 18: FAQS ACCORDION */}
         {/* ============================================================== */}
         <section id="faq" className="bg-skylight py-20 md:py-28 text-navy">
-          <div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[1fr_1.4fr]">
+          <div className="mx-auto grid max-w-[1440px] gap-12 px-4 sm:px-6 lg:px-[108px] lg:grid-cols-[1fr_1.4fr]">
             <div className="lg:sticky lg:top-28 lg:self-start">
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
                 <span className="h-2 w-2 rounded-full bg-coral" />
@@ -2838,7 +2838,7 @@ export default function Index() {
             aria-hidden="true"
           />
 
-          <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-5 lg:grid-cols-2">
+          <div className="relative mx-auto grid max-w-[1440px] items-center gap-10 px-4 sm:px-6 lg:px-[108px] lg:grid-cols-2">
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.25em] text-sunny">
                 Insights

@@ -47,7 +47,7 @@ export default function Footer({ onOpenAudit }: FooterProps) {
           />
         </svg>
 
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-4 sm:px-6 lg:px-[108px] md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           {/* Brand info */}
           <div>
             <a
@@ -220,7 +220,7 @@ export default function Footer({ onOpenAudit }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 pb-24 text-xs text-cream/60 md:flex-row md:pb-8">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-3 px-4 sm:px-6 lg:px-[108px] pb-24 text-xs text-cream/60 md:flex-row md:pb-8">
           <p>© 2026 Sociokraft. Great doctors deserve to be seen.</p>
           <div className="flex gap-4">
             <a href="#top" className="hover:text-sunny transition">
@@ -246,9 +246,8 @@ export default function Footer({ onOpenAudit }: FooterProps) {
       <button
         onClick={scrollToTop}
         aria-label="Back to top"
-        className={`fixed bottom-24 right-6 z-40 grid h-11 w-11 place-items-center rounded-full border-2 border-navy bg-card text-navy transition-all duration-300 hover:-translate-y-1 ${
-          showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
-        }`}
+        className={`fixed bottom-24 right-6 z-40 grid h-11 w-11 place-items-center rounded-full border-2 border-navy bg-card text-navy transition-all duration-300 hover:-translate-y-1 ${showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+          }`}
       >
         <ArrowUp className="h-5 w-5" />
       </button>

@@ -47,9 +47,9 @@ export default function Header({ onOpenAudit }: HeaderProps) {
 
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-2.5" : "py-4"}`}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-20">
         <div
-          className={`flex items-center justify-between rounded-full px-4 py-2 transition-all duration-300 md:px-6 ${
+          className={`flex items-center justify-between rounded-full px-5 py-2.5 transition-all duration-300 md:px-7 ${
             scrolled
               ? "border-2 border-navy bg-white shadow-md"
               : "border-2 border-transparent bg-transparent shadow-none"
