@@ -53,8 +53,78 @@ export default function Index() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [selectedGalleryItem, setSelectedGalleryItem] = useState<any>(null);
 
-  // Transformation before/after slider (0 to 100)
-  const [sliderPos, setSliderPos] = useState(50);
+  // Transformation before/after automated transition (0 = Before, 100 = After)
+  const [sliderPos, setSliderPos] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showDivider, setShowDivider] = useState(true);
+  const transformationSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    let hideTimer: NodeJS.Timeout;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          // Immediately trigger smooth transformation without delay
+          setIsTransitioning(true);
+          setShowDivider(true);
+          setSliderPos(100);
+
+          clearTimeout(hideTimer);
+          hideTimer = setTimeout(() => {
+            setShowDivider(false);
+          }, 1350);
+        } else {
+          // Reset when scrolled out of view so it can animate again when returning
+          clearTimeout(hideTimer);
+          setIsTransitioning(false);
+          setShowDivider(true);
+          setSliderPos(0);
+        }
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    if (transformationSectionRef.current) {
+      observer.observe(transformationSectionRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
+  const handleShowBefore = () => {
+    setShowDivider(true);
+    setIsTransitioning(true);
+    setSliderPos(0);
+  };
+
+  const handleShowAfter = () => {
+    setShowDivider(true);
+    setIsTransitioning(true);
+    setSliderPos(100);
+    setTimeout(() => {
+      setShowDivider(false);
+    }, 1350);
+  };
+
+  const handleReplay = () => {
+    setIsTransitioning(false);
+    setShowDivider(true);
+    setSliderPos(0);
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setSliderPos(100);
+        setTimeout(() => {
+          setShowDivider(false);
+        }, 1350);
+      }, 40);
+    });
+  };
 
   // Content Studio Tab
   const [studioStage, setStudioStage] = useState<"script" | "record" | "edit" | "publish">("script");
@@ -724,8 +794,8 @@ export default function Index() {
             </div>
             <div>
               <h2 className="mt-5 max-w-4xl text-4xl font-extrabold leading-[1.02] tracking-tight md:text-7xl text-navy">
-                Being a Great Doctor Is{" "}
-                <span className="relative inline-block rounded-2xl border-2 border-navy bg-card px-3 -rotate-1 text-navy">
+                <span className="relative z-10">Being</span> a Great Doctor Is{" "}
+                <span className="relative z-0 inline-block rounded-2xl border-2 border-navy bg-card px-3 -rotate-1 text-navy">
                   Only
                 </span>{" "}
                 the Beginning.
@@ -742,14 +812,14 @@ export default function Index() {
             <div className="mt-16 space-y-10">
               {/* Problem 01 */}
               <div className="grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
-                <span className="text-[7rem] font-black leading-none text-outline md:text-[11rem] select-none">
+                <span className="text-[7rem] font-black leading-none text-sky md:text-[11rem] select-none">
                   01
                 </span>
-                <div className="rounded-[2rem] border-2 border-navy bg-card p-8 hard-shadow">
+                <div className="rounded-[2rem] border-2 border-navy bg-sky p-8 hard-shadow text-navy">
                   <h3 className="text-2xl font-extrabold md:text-3xl text-navy">
                     Expertise That Goes Unnoticed
                   </h3>
-                  <p className="mt-2 text-muted-foreground">
+                  <p className="mt-2 text-navy/90">
                     You have years of medical experience, but your digital presence does not reflect
                     the quality of your work.
                   </p>
@@ -760,7 +830,7 @@ export default function Index() {
                     alt=""
                     width="768"
                     height="960"
-                    className="h-full w-full rounded-2xl object-cover grayscale opacity-60 border-2 border-navy rotate-6"
+                    className="h-full w-full rounded-2xl object-cover border-2 border-navy rotate-6"
                   />
                   <span className="absolute -bottom-3 -left-3 rounded-full bg-navy px-3 py-1 text-xs font-bold text-cream">
                     0 posts
@@ -833,7 +903,7 @@ export default function Index() {
         {/* ============================================================== */}
         {/* SECTION 5: THE TRANSFORMATION (Interactive Slider) */}
         {/* ============================================================== */}
-        <section id="transformation" className="bg-card py-20 md:py-28">
+        <section id="transformation" ref={transformationSectionRef} className="bg-card py-20 md:py-28">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div className="text-center">
               <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy bg-mint">
@@ -847,14 +917,96 @@ export default function Index() {
                 </span>
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Drag the handle to compare. An illustration of our service approach — not a guaranteed outcome.
+                Watch the transformation unfold. An illustration of our service approach — not a guaranteed outcome.
               </p>
+
+              {/* Interactive toggle pills & replay */}
+              <div className="mt-6 flex items-center justify-center gap-3">
+                <div className="inline-flex rounded-full border-2 border-navy bg-card p-1 shadow-sm">
+                  <button
+                    type="button"
+                    onClick={handleShowBefore}
+                    className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${
+                      sliderPos === 0
+                        ? "bg-destructive text-cream shadow-sm"
+                        : "text-navy hover:text-navy/70"
+                    }`}
+                  >
+                    Before
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleShowAfter}
+                    className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${
+                      sliderPos === 100
+                        ? "bg-emerald text-cream shadow-sm"
+                        : "text-navy hover:text-navy/70"
+                    }`}
+                  >
+                    After
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleReplay}
+                  title="Replay animation"
+                  className="inline-flex items-center gap-1.5 rounded-full border-2 border-navy bg-card px-3.5 py-1.5 text-xs font-bold text-navy hover:bg-sand transition-all active:scale-95 shadow-sm"
+                >
+                  <Repeat className="h-3.5 w-3.5" />
+                  <span>Replay</span>
+                </button>
+              </div>
             </div>
 
-            {/* Before / After Interactive Container */}
-            <div className="relative mx-auto mt-12 aspect-[4/5] max-w-5xl select-none overflow-hidden rounded-[2rem] border-2 border-navy hard-shadow sm:aspect-[16/9]">
-              {/* AFTER layer (Mint) */}
-              <div className="absolute inset-0 grid grid-cols-1 gap-4 bg-mint p-6 sm:grid-cols-2 sm:p-10">
+            {/* Before / After Automated Transition Container */}
+            <div className="relative mx-auto mt-10 aspect-[4/5] max-w-5xl select-none overflow-hidden rounded-[2rem] border-2 border-navy hard-shadow sm:aspect-[16/9]">
+              {/* BEFORE layer (Sand) - Base layer */}
+              <div className="absolute inset-0 grid grid-cols-1 gap-4 bg-sand p-6 sm:grid-cols-2 sm:p-10">
+                <div className="hidden flex-col justify-center sm:flex">
+                  <span className="mb-3 w-fit rounded-full bg-destructive px-3 py-1 text-xs font-bold text-cream">
+                    BEFORE
+                  </span>
+                  <ul className="space-y-2 text-navy opacity-75">
+                    {[
+                      "No active social presence or visual branding",
+                      "Zero structured video content",
+                      "Sporadic, inconsistent posts once in months",
+                      "Confusion over medical compliance and topics",
+                      "Outdated, non-responsive clinic webpage",
+                      "Missed patient inquiries and low digital trust",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 font-semibold line-through">
+                        <X className="mt-0.5 h-5 w-5 shrink-0 rounded-full bg-destructive/80 p-0.5 text-cream" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="relative rounded-3xl border-2 border-navy bg-card/60 p-4 grayscale opacity-70">
+                  <div className="flex items-center gap-3">
+                    <div className="h-14 w-14 rounded-full border-2 border-navy bg-muted grid place-items-center text-xs font-bold">
+                      Dr. ?
+                    </div>
+                    <div>
+                      <p className="font-extrabold text-navy">Private Clinic</p>
+                      <p className="text-xs text-muted-foreground">Last active 9 months ago</p>
+                    </div>
+                  </div>
+                  <div className="mt-8 text-center py-6 text-sm text-muted-foreground border-2 border-dashed border-navy/30 rounded-xl">
+                    No recent reels or articles
+                  </div>
+                </div>
+              </div>
+
+              {/* AFTER layer (Mint) - Overlaid and clipped by progress */}
+              <div
+                className="absolute inset-0 grid grid-cols-1 gap-4 bg-mint p-6 sm:grid-cols-2 sm:p-10"
+                style={{
+                  clipPath: `inset(0 ${100 - sliderPos}% 0 0)`,
+                  transition: isTransitioning ? "clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1)" : "none",
+                }}
+              >
                 <div className="hidden flex-col justify-center sm:flex">
                   <span className="mb-3 w-fit rounded-full bg-emerald px-3 py-1 text-xs font-bold text-cream">
                     AFTER
@@ -922,70 +1074,19 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* BEFORE layer clipped by slider */}
+              {/* Animated Divider Sweep Line and Handle */}
               <div
-                className="absolute inset-y-0 left-0 overflow-hidden bg-sand"
-                style={{ width: `${sliderPos}%` }}
-              >
-                <div className="w-[1024px] max-w-none h-full grid grid-cols-1 gap-4 p-6 sm:grid-cols-2 sm:p-10">
-                  <div className="hidden flex-col justify-center sm:flex">
-                    <span className="mb-3 w-fit rounded-full bg-destructive px-3 py-1 text-xs font-bold text-cream">
-                      BEFORE
-                    </span>
-                    <ul className="space-y-2 text-navy opacity-75">
-                      {[
-                        "No active social presence or visual branding",
-                        "Zero structured video content",
-                        "Sporadic, inconsistent posts once in months",
-                        "Confusion over medical compliance and topics",
-                        "Outdated, non-responsive clinic webpage",
-                        "Missed patient inquiries and low digital trust",
-                      ].map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 font-semibold line-through">
-                          <X className="mt-0.5 h-5 w-5 shrink-0 rounded-full bg-destructive/80 p-0.5 text-cream" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="relative rounded-3xl border-2 border-navy bg-card/60 p-4 grayscale opacity-70">
-                    <div className="flex items-center gap-3">
-                      <div className="h-14 w-14 rounded-full border-2 border-navy bg-muted grid place-items-center text-xs font-bold">
-                        Dr. ?
-                      </div>
-                      <div>
-                        <p className="font-extrabold text-navy">Private Clinic</p>
-                        <p className="text-xs text-muted-foreground">Last active 9 months ago</p>
-                      </div>
-                    </div>
-                    <div className="mt-8 text-center py-6 text-sm text-muted-foreground border-2 border-dashed border-navy/30 rounded-xl">
-                      No recent reels or articles
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Slider Divider Bar and Handle */}
-              <div
-                className="absolute inset-y-0 z-20 w-1 bg-navy pointer-events-none"
-                style={{ left: `${sliderPos}%` }}
+                className="absolute inset-y-0 z-20 w-1 bg-navy pointer-events-none transition-opacity duration-500"
+                style={{
+                  left: `${sliderPos}%`,
+                  transition: isTransitioning ? "left 1.2s cubic-bezier(0.16, 1, 0.3, 1)" : "none",
+                  opacity: showDivider && sliderPos > 2 && sliderPos < 98 ? 1 : 0,
+                }}
               >
                 <div className="absolute top-1/2 -left-4 -translate-y-1/2 grid h-9 w-9 place-items-center rounded-full border-2 border-navy bg-coral text-navy shadow-md font-bold text-xs pointer-events-none">
                   ⇄
                 </div>
               </div>
-
-              {/* Invisible range input for full interaction */}
-              <input
-                type="range"
-                min="5"
-                max="95"
-                value={sliderPos}
-                onChange={(e) => setSliderPos(Number(e.target.value))}
-                className="absolute inset-0 z-30 opacity-0 cursor-ew-resize w-full h-full"
-                aria-label="Compare Before and After"
-              />
             </div>
           </div>
         </section>
@@ -1288,52 +1389,36 @@ export default function Index() {
 
                   {/* Browser Mockup */}
                   <div
-                    className={`mx-auto overflow-hidden border-2 border-navy bg-card hard-shadow transition-all duration-500 rounded-2xl ${webPreviewDevice === "mobile" ? "max-w-[340px]" : "w-full"
-                      }`}
+                    className={`mx-auto overflow-hidden border-2 border-navy bg-card hard-shadow transition-all duration-500 rounded-2xl ${
+                      webPreviewDevice === "mobile" ? "max-w-[320px]" : "w-full"
+                    }`}
                   >
                     <div className="flex items-center gap-1.5 border-b-2 border-navy bg-sand px-3 py-2">
                       <span className="h-2.5 w-2.5 rounded-full bg-coral" />
                       <span className="h-2.5 w-2.5 rounded-full bg-sunny" />
                       <span className="h-2.5 w-2.5 rounded-full bg-emerald" />
-                      <span className="ml-2 truncate text-[11px] text-muted-foreground font-mono">
-                        drexample.in · concept
+                      <span className="ml-2 truncate text-[11px] text-navy/80 font-mono font-bold">
+                        {webPreviewDevice === "mobile"
+                          ? "drgauravgupta.com · mobile view"
+                          : "drgauravgupta.com · live website"}
                       </span>
                     </div>
 
-                    <div
-                      className={`grid gap-4 p-5 ${webPreviewDevice === "mobile" ? "grid-cols-1" : "grid-cols-[1.2fr_1fr]"
-                        }`}
-                    >
-                      <div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-emerald">
-                          Consultant Dermatologist
-                        </p>
-                        <p className="font-extrabold text-2xl md:text-3xl text-navy leading-tight mt-1">
-                          Healthy skin, explained clearly.
-                        </p>
-                        <p className="mt-2 text-xs text-muted-foreground">
-                          MBBS, MD · 12+ years · Acne, pigmentation & hair care
-                        </p>
-                        <span className="mt-3 inline-block rounded-full bg-coral px-4 py-2 text-xs font-bold text-navy shadow-sm">
-                          Request appointment
-                        </span>
-                      </div>
+                    <div className="relative w-full overflow-hidden bg-[#072421]">
                       <img
-                        src={doc1Img}
-                        alt="Concept doctor portfolio hero"
-                        className="aspect-[4/3] w-full rounded-xl object-cover border-2 border-navy"
+                        key={webPreviewDevice}
+                        src={
+                          webPreviewDevice === "mobile"
+                            ? "/dr-gaurav-mobile.png"
+                            : "/dr-gaurav-site.png"
+                        }
+                        alt={
+                          webPreviewDevice === "mobile"
+                            ? "Dr. Gaurav Sandeep Gupta Website - Mobile View"
+                            : "Dr. Gaurav Sandeep Gupta Website - Desktop View"
+                        }
+                        className="w-full h-auto block"
                       />
-                      <div className="grid grid-cols-3 gap-2 col-span-full">
-                        <div className="rounded-lg bg-mint p-2 text-[11px] font-bold text-center border border-navy/20">
-                          Acne care
-                        </div>
-                        <div className="rounded-lg bg-mint p-2 text-[11px] font-bold text-center border border-navy/20">
-                          Laser
-                        </div>
-                        <div className="rounded-lg bg-mint p-2 text-[11px] font-bold text-center border border-navy/20">
-                          Hair loss
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -1542,7 +1627,7 @@ export default function Index() {
             </div>
 
             {/* Filter Tabs */}
-            <div className="-mx-5 mt-8 flex gap-2 overflow-x-auto px-5 pb-2" role="tablist">
+            <div className="-mx-5 mt-6 flex gap-2 overflow-x-auto px-5 pt-2 pb-2.5" role="tablist">
               {[
                 "All Projects",
                 "Reels & Videos",
@@ -1557,7 +1642,7 @@ export default function Index() {
                   onClick={() => setWorkFilter(tab)}
                   role="tab"
                   aria-selected={workFilter === tab}
-                  className={`shrink-0 rounded-full border-2 border-navy px-4 py-2 text-sm font-bold transition hover:-translate-y-0.5 ${workFilter === tab ? "bg-navy text-cream" : "bg-card text-navy"
+                  className={`shrink-0 rounded-full border-2 border-navy px-4 py-2 text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 ${workFilter === tab ? "bg-navy text-cream shadow-sm" : "bg-card text-navy hover:shadow-sm"
                     }`}
                 >
                   {tab}
@@ -2577,42 +2662,32 @@ export default function Index() {
                 {
                   bg: "bg-peach",
                   rotate: "-rotate-2",
-                  doc: doc1Img,
                 },
                 {
                   bg: "bg-skylight",
                   rotate: "rotate-1 md:mt-12",
-                  doc: doc2Img,
                 },
                 {
                   bg: "bg-mint",
                   rotate: "-rotate-1",
-                  doc: reelImg,
                 },
               ].map((card, idx) => (
                 <div key={idx} className={card.rotate}>
                   <figure
-                    className={`relative rounded-[2rem] border-2 border-navy p-6 hard-shadow transition hover:rotate-0 ${card.bg} text-navy`}
+                    className={`relative rounded-[2rem] border-2 border-navy p-7 hard-shadow transition hover:rotate-0 ${card.bg} text-navy`}
                   >
                     <Quote className="absolute -top-5 left-6 h-10 w-10 rounded-full border-2 border-navy bg-coral p-2 text-navy" />
-                    <span className="absolute right-4 top-4 rounded-full border-2 border-dashed border-navy bg-card px-2 py-0.5 text-[10px] font-black uppercase text-navy">
+                    <span className="absolute right-4 top-4 rounded-full border-2 border-dashed border-navy bg-card px-2.5 py-0.5 text-[10px] font-black uppercase text-navy">
                       Placeholder
                     </span>
-                    <div className="mt-4 h-32 overflow-hidden rounded-2xl border-2 border-navy">
-                      <img
-                        src={card.doc}
-                        alt=""
-                        className="h-full w-full object-cover opacity-60 grayscale"
-                      />
-                    </div>
-                    <blockquote className="mt-4 italic text-muted-foreground text-sm">
+                    <blockquote className="mt-4 italic text-navy/85 text-sm leading-relaxed">
                       “Approved doctor testimonial will appear here once supplied and permission
                       for publication is confirmed.”
                     </blockquote>
-                    <figcaption className="mt-4 text-sm text-navy">
+                    <figcaption className="mt-5 border-t border-navy/20 pt-4 text-sm text-navy">
                       <b>Doctor name</b> · Specialty
                       <br />
-                      <span className="text-muted-foreground">Clinic name · Project scope</span>
+                      <span className="text-muted-foreground text-xs">Clinic name · Project scope</span>
                     </figcaption>
                   </figure>
                 </div>
@@ -2649,10 +2724,6 @@ export default function Index() {
                 { title: "Client Relations Manager", bg: "bg-turq", delay: "md:mt-10" },
                 { title: "Content Strategist", bg: "bg-sunny", delay: "" },
                 { title: "Social Media Manager", bg: "bg-pink", delay: "md:mt-10" },
-                { title: "Graphic & Motion Designer", bg: "bg-sky", delay: "" },
-                { title: "Video Editor", bg: "bg-emerald", delay: "md:mt-10" },
-                { title: "Website Designer", bg: "bg-grape", delay: "" },
-                { title: "Creative Producer", bg: "bg-peach", delay: "md:mt-10" },
               ].map((member, idx) => (
                 <div key={idx} className={member.delay}>
                   <div className="group text-center">
