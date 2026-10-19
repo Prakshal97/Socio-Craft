@@ -61,29 +61,33 @@ export default function Index() {
 
   useEffect(() => {
     let hideTimer: NodeJS.Timeout;
+    let startTimer: NodeJS.Timeout;
 
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
-          // Immediately trigger smooth transformation without delay
-          setIsTransitioning(true);
-          setShowDivider(true);
-          setSliderPos(100);
+          // Wait 300ms after the section enters view before starting the animation
+          startTimer = setTimeout(() => {
+            setIsTransitioning(true);
+            setShowDivider(true);
+            setSliderPos(100);
 
-          clearTimeout(hideTimer);
-          hideTimer = setTimeout(() => {
-            setShowDivider(false);
-          }, 1350);
+            clearTimeout(hideTimer);
+            hideTimer = setTimeout(() => {
+              setShowDivider(false);
+            }, 1350);
+          }, 300);
         } else {
           // Reset when scrolled out of view so it can animate again when returning
           clearTimeout(hideTimer);
+          clearTimeout(startTimer);
           setIsTransitioning(false);
           setShowDivider(true);
           setSliderPos(0);
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.45, rootMargin: "0px 0px 0px 0px" }
     );
 
     if (transformationSectionRef.current) {
@@ -93,6 +97,7 @@ export default function Index() {
     return () => {
       observer.disconnect();
       clearTimeout(hideTimer);
+      clearTimeout(startTimer);
     };
   }, []);
 
@@ -494,7 +499,7 @@ export default function Index() {
                   Personal branding for doctors
                 </span>
                 <span className="rounded-full border-2 border-navy bg-white px-3.5 py-1 text-[13.5px] font-bold text-navy">
-                  🎬 Reels · 📱 Social · 🌐 Websites
+                  Reels · Social · Websites
                 </span>
               </div>
 
@@ -812,10 +817,10 @@ export default function Index() {
             <div className="mt-16 space-y-10">
               {/* Problem 01 */}
               <div className="grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
-                <span className="text-[7rem] font-black leading-none text-sky md:text-[11rem] select-none">
+                <span className="text-[7rem] font-black leading-none text-coral md:text-[11rem] select-none">
                   01
                 </span>
-                <div className="rounded-[2rem] border-2 border-navy bg-sky p-8 hard-shadow text-navy">
+                <div className="rounded-[2rem] border-2 border-navy bg-coral p-8 hard-shadow text-navy">
                   <h3 className="text-2xl font-extrabold md:text-3xl text-navy">
                     Expertise That Goes Unnoticed
                   </h3>
@@ -869,7 +874,7 @@ export default function Index() {
                     </span>
                   </div>
                 </div>
-                <span className="order-first text-[7rem] font-black leading-none text-coral md:order-none md:text-[11rem] select-none">
+                <span className="order-first text-[7rem] font-black leading-none text-sunny md:order-none md:text-[11rem] select-none">
                   02
                 </span>
               </div>

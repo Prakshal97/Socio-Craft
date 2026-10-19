@@ -49,10 +49,10 @@ export default function Header({ onOpenAudit }: HeaderProps) {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-2.5" : "py-4"}`}>
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-20">
         <div
-          className={`flex items-center justify-between rounded-full px-5 py-2.5 transition-all duration-300 md:px-7 ${
+          className={`flex items-center justify-between rounded-full px-5 py-2.5 transition-all duration-300 md:px-7 border-2 border-b-4 ${
             scrolled
-              ? "border-2 border-navy bg-white shadow-md"
-              : "border-2 border-transparent bg-transparent shadow-none"
+              ? "border-navy bg-white shadow-none"
+              : "border-transparent bg-transparent shadow-none"
           }`}
         >
           {/* Brand Logo */}
@@ -68,7 +68,7 @@ export default function Header({ onOpenAudit }: HeaderProps) {
               S
             </span>
             <span>
-              Socio<span className="text-ocean">kraft</span>
+              Socio <span className="text-ocean">kraft</span>
             </span>
           </a>
 
@@ -186,7 +186,17 @@ export default function Header({ onOpenAudit }: HeaderProps) {
               <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded bg-coral transition-transform duration-300 group-hover:scale-x-100" />
             </a>
 
-
+            <a
+              href="#process"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick("#process");
+              }}
+              className="group relative py-1 text-sm font-bold text-navy hover:text-ocean transition"
+            >
+              Process
+              <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded bg-coral transition-transform duration-300 group-hover:scale-x-100" />
+            </a>
             <a
               href="#pricing"
               onClick={(e) => {
@@ -290,6 +300,16 @@ export default function Header({ onOpenAudit }: HeaderProps) {
             className="text-3xl font-extrabold text-navy transition hover:translate-x-2"
           >
             Our Work
+          </a>
+          <a
+            href="#process"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick("#process");
+            }}
+            className="text-3xl font-extrabold text-navy transition hover:translate-x-2"
+          >
+            Process
           </a>
           <a
             href="#pricing"
